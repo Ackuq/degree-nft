@@ -1,0 +1,12 @@
+{
+  "name": "degree-nft",
+  "version": "0.0.1",
+  "description": "Degree for my MSc degree",
+  "main": "index.js",
+  "repository": "https://github.com/Ackuq/degree-nft",
+  "author": "Axel Pettersson",
+  "license": "MIT",
+  "devDependencies": {
+    "hardhat": "^2.10.1"
+  }
+}
