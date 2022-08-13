@@ -7,7 +7,8 @@
   "author": "Axel Pettersson",
   "license": "MIT",
   "scripts": {
-    "compile": "hardhat compile"
+    "compile": "hardhat compile",
+    "deploy": "hardhat run scripts/deploy.ts"
   },
   "dependencies": {
     "@openzeppelin/contracts": "^4.7.3",
