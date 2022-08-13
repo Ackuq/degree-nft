@@ -6,10 +6,18 @@
   "repository": "https://github.com/Ackuq/degree-nft",
   "author": "Axel Pettersson",
   "license": "MIT",
-  "devDependencies": {
-    "hardhat": "^2.10.1"
+  "scripts": {
+    "compile": "hardhat compile"
   },
   "dependencies": {
-    "@openzeppelin/contracts": "^4.7.3"
+    "@openzeppelin/contracts": "^4.7.3",
+    "dotenv": "^16.0.1"
+  },
+  "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.1.0",
+    "ethers": "^5.6.9",
+    "hardhat": "^2.10.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.7.4"
   }
 }
