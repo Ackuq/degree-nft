@@ -1,4 +1,5 @@
-import { HardhatUserConfig } from "hardhat/config";
+import type { HardhatUserConfig } from "hardhat/config";
+import "@typechain/hardhat";
 import "@nomiclabs/hardhat-ethers";
 import dotenv from "dotenv";
 import { ethers } from "ethers";
