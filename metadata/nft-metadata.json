@@ -1,0 +1,19 @@
+{
+  "attributes": [
+    {
+      "trait_type": "Degree title",
+      "value": "Degree of Master of Science in Engineering"
+    },
+    {
+      "trait_type": "Awarding institution",
+      "value": "Kungliga Tekniska Högskolan (KTH Royal Institute of Technology)"
+    },
+    {
+      "trait_type": "Qualification holder",
+      "value": "Axel Pettersson"
+    }
+  ],
+  "description": "Degree certificate of MSc. in Engineering Axel Pettersson.",
+  "image": "ipfs://bafybeig5wnil3v6hskwg5ehjaebh6yy46pn77htsbejpbmamow3hpzs6vy",
+  "name": "Degree certificate"
+}
