@@ -2,13 +2,13 @@ import { ethers } from "hardhat";
 
 const main = async () => {
   // Get contract
-  const SingleNFT = await ethers.getContractFactory("SingleNFT");
+  const DegreeNFT = await ethers.getContractFactory("DegreeNFT");
 
   // Start deployment
-  const singleNFT = await SingleNFT.deploy();
+  const degreeNFT = await DegreeNFT.deploy();
   // Wait until deployment is complete
-  await singleNFT.deployed();
-  console.log("Contract deployed to address:", singleNFT.address);
+  await degreeNFT.deployed();
+  console.log("Contract deployed to address:", degreeNFT.address);
 };
 
 main().catch((error) => {
