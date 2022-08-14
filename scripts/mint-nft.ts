@@ -7,7 +7,7 @@ dotenv.config();
 const { ALCHEMY_API_KEY, PRIVATE_KEY, NETWORK } = process.env;
 const provider = new ethers.providers.AlchemyProvider(NETWORK, ALCHEMY_API_KEY);
 
-const contractAddress = "0xFEf8219c055a2E2ACF52D1cFDF0Fd5aEB87EDFAB";
+const contractAddress = "0xC4422cB08e79b4be7B3BAf967C00248405C5490d";
 
 // Create a signer
 if (!PRIVATE_KEY) {
