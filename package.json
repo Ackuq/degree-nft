@@ -8,9 +8,11 @@
   "license": "MIT",
   "scripts": {
     "compile": "hardhat compile",
-    "deploy": "hardhat run scripts/deploy.ts"
+    "deploy": "hardhat run scripts/deploy.ts",
+    "mint": "ts-node scripts/mint-nft.ts"
   },
   "dependencies": {
+    "@alch/alchemy-web3": "^1.4.6",
     "@openzeppelin/contracts": "^4.7.3",
     "dotenv": "^16.0.1"
   },
