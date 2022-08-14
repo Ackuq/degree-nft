@@ -34,9 +34,7 @@ if (!requestedURI) {
   process.exit(1);
 }
 
-mintNFT(
-  "ipfs://bafkreicdcefsnel44ykygfby7nsx7olpiungeec4yabobc75de7bvqt7oi"
-).catch((error) => {
+mintNFT(requestedURI).catch((error) => {
   console.error(error);
   process.exit(1);
 });
