@@ -1,14 +1,14 @@
 import { HardhatUserConfig } from "hardhat/config";
 import "@nomiclabs/hardhat-ethers";
 import dotenv from "dotenv";
-import { ethers } from "hardhat";
+import { ethers } from "ethers";
 dotenv.config();
 
 const { ALCHEMY_API_KEY, PRIVATE_KEY, NETWORK = "goerli" } = process.env;
 
 console.log(`Using network ${NETWORK}...`);
 
-const provider = new ethers.providers.AlchemyProvider(NETWORK, ALCHEMY_API_KEY);
+const network = ethers.providers.getNetwork(NETWORK);
 
 if (!ALCHEMY_API_KEY || !PRIVATE_KEY) {
   throw new Error(
@@ -18,10 +18,11 @@ if (!ALCHEMY_API_KEY || !PRIVATE_KEY) {
 
 const config: HardhatUserConfig = {
   solidity: "0.8.9",
-  defaultNetwork: provider.network.name,
+  defaultNetwork: network.name,
   networks: {
-    [provider.network.name]: {
-      ...provider.network,
+    [network.name]: {
+      url: ethers.providers.AlchemyProvider.getUrl(network, ALCHEMY_API_KEY)
+        .url,
       accounts: [PRIVATE_KEY],
     },
   },
