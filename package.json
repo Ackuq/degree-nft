@@ -11,6 +11,7 @@
     "compile": "hardhat compile",
     "deploy": "hardhat run scripts/deploy.ts",
     "mint": "hardhat run scripts/mint-nft.ts",
+    "estimate-gas": "hardhat run scripts/estimateGas.ts",
     "test": "hardhat test"
   },
   "dependencies": {
