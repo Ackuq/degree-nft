@@ -10,7 +10,7 @@
     "clean": "rm -rf artifacts cache",
     "compile": "hardhat compile",
     "deploy": "hardhat run scripts/deploy.ts",
-    "mint": "ts-node scripts/mint-nft.ts",
+    "mint": "hardhat run scripts/mint-nft.ts",
     "test": "hardhat test"
   },
   "dependencies": {

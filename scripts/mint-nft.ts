@@ -1,43 +1,31 @@
 import dotenv from "dotenv";
-import contract from "../artifacts/contracts/DegreeNFT.sol/DegreeNFT.json";
-import * as ethers from "ethers";
+import { ethers, network } from "hardhat";
 import readline from "readline";
 
 // Get env vars
 dotenv.config();
-const {
-  ALCHEMY_API_KEY,
-  PRIVATE_KEY,
-  CONTRACT_ADDRESS,
-  NETWORK = "goerli",
-} = process.env;
-const provider = new ethers.providers.AlchemyProvider(NETWORK, ALCHEMY_API_KEY);
+const { CONTRACT_ADDRESS } = process.env;
 
-// Create a signer
-if (!PRIVATE_KEY) {
-  console.error("`PRIVATE_KEY` not specified, exiting...");
-  process.exit(1);
-} else if (!ALCHEMY_API_KEY) {
-  console.error("`ALCHEMY_API_KEY` not specified, exiting...");
-  process.exit(1);
-} else if (!CONTRACT_ADDRESS) {
+if (!CONTRACT_ADDRESS) {
   console.error("`CONTRACT_ADDRESS` not specified, exiting...");
   process.exit(1);
 }
+const mint = async (tokenURI: string) => {
+  const signer = (await ethers.getSigners())[0];
 
-const signer = new ethers.Wallet(PRIVATE_KEY, provider);
+  const contract = await ethers.getContractAt(
+    "DegreeNFT",
+    CONTRACT_ADDRESS,
+    signer
+  );
 
-const abi = contract.abi;
-const nftContract = new ethers.Contract(CONTRACT_ADDRESS, abi, signer);
-
-const mintNFT = async (tokenURI: string) => {
-  // Mint the new NFT
-  let nftTxn = await nftContract.safeMint(signer.address, tokenURI);
+  const nftTxn = await contract.safeMint(signer.address, tokenURI);
   await nftTxn.wait();
+
   const link =
-    (NETWORK === "mainnet"
+    (network.name === "mainnet"
       ? "https://etherscan.io/tx/"
-      : `https://${NETWORK}.etherscan.io/tx/`) + nftTxn.hash;
+      : `https://${network.name}.etherscan.io/tx/`) + nftTxn.hash;
   console.log(`NFT Minted! Check it out at: ${link}`);
 };
 
@@ -60,7 +48,7 @@ rl.question("IPFS URI for metadata: ", (tokenURI: string) => {
     `Do you want to mint using metadata found at ${httpsURI}, yes or no? `,
     (answer) => {
       if (answer.toLowerCase() === "y" || answer.toLowerCase() === "yes") {
-        mintNFT(tokenURI).catch((error) => {
+        mint(tokenURI).catch((error) => {
           console.error(error);
           process.exit(1);
         });
