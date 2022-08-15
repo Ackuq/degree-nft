@@ -7,11 +7,27 @@ const main = async () => {
   const contractFactory = await ethers.getContractFactory("DegreeNFT");
   const deployTransaction = await contractFactory.getDeployTransaction();
   const provider = ethers.getDefaultProvider();
-  const estimation = await provider.estimateGas(deployTransaction);
+
+  const amountEstimation = await provider.estimateGas(deployTransaction);
 
   console.log(
     "The estimated amount of gas for deployment is:",
-    estimation.toString()
+    amountEstimation.toString()
+  );
+
+  const gasPrice = await provider.getGasPrice();
+
+  console.log(
+    `Gas price is at ${ethers.utils.formatUnits(gasPrice, "gwei")} Gwei`
+  );
+
+  const deployCost = amountEstimation.mul(gasPrice);
+
+  console.log(
+    `Deployment cost estimated to ${ethers.utils.formatUnits(
+      deployCost,
+      "gwei"
+    )} Gwei (or ${ethers.utils.formatEther(deployCost)} ETH)`
   );
 };
 
